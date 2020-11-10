@@ -1,6 +1,8 @@
 package demo;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,15 +19,20 @@ public class CheckController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int number = Integer.parseInt(request.getParameter("number"));
-		
+		String nextPage = null;
+
 		Database db = new Database();
-		DTOStudent dto = db.findNumber(number);
-		if(db.findNumber(number) != null) {
-			if(db.findGrade(number).equals(number)) {
-				
-			}
-		}
+		DTOStudent student = db.findGrade(number);
 		
+		request.setAttribute("no", student.getNumber());
+		request.setAttribute("name", student.getName());
+		request.setAttribute("kor", student.getKor());
+		request.setAttribute("mat", student.getMat());
+		request.setAttribute("eng", student.getEng());
+		nextPage = "check.jsp";
+		
+		RequestDispatcher disp = request.getRequestDispatcher(nextPage);
+		disp.forward(request, response);
 	}
 
 }

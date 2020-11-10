@@ -10,7 +10,7 @@
 	<form action="/UpdateController" method="post">
 		<table>
 			<tr>
-				<th>성적입력</th>
+				<th>성적수정</th>
 			</tr>
 			<tr>
 				<td>번호</td>

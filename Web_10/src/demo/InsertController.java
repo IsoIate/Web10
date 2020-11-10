@@ -15,6 +15,7 @@ public class InsertController extends HttpServlet {
 
     public InsertController() {
         super();
+        System.out.println("insertController");
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
