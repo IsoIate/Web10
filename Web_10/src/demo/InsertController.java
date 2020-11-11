@@ -27,7 +27,7 @@ public class InsertController extends HttpServlet {
 		String nextPage = null;
 		
 		Database db = new Database();
-		DTOStudent dto = db.inputGrade(number, name, kor, mat, eng);
+		db.inputGrade(number, name, kor, mat, eng);
 		nextPage = "index.jsp";
 		
 		RequestDispatcher disp = request.getRequestDispatcher(nextPage);

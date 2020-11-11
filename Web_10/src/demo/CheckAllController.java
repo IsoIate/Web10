@@ -1,6 +1,7 @@
 package demo;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,18 +19,14 @@ public class CheckAllController extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int num = 1;
+		
 		Database db = new Database();
 		String nextPage = null;
-		while(num < 4) {
-			DTOStudent student = db.findGradeAll(num);
-			
-			request.setAttribute("no", student.getNumber());
-			request.setAttribute("name", student.getName());
-			request.setAttribute("kor", student.getKor());
-			request.setAttribute("mat", student.getMat());
-			request.setAttribute("eng", student.getEng());
-			num++;
+		ArrayList<DTOStudent> list = db.findGradeAll();	// 학생 정보가 담긴 리스트를 받아서 DTOStudent클래스 형태로 변환
+		
+		
+		for (int i = 0; i < list.size(); i++) {	// for문 돌면서 리스트에 담긴 값을 Attribute로 넘김
+			request.setAttribute("list", list);
 		}
 		
 		nextPage = "checkAll.jsp";

@@ -65,7 +65,7 @@
 				<td><input disabled="disabled"value="<%= request.getAttribute("eng") %>"></td>
 			</tr>
 			<tr>
-				<td><a href="index.jsp">돌아가기</a></td>
+				<td><a href="index.jsp"><input type="button" value="돌아가기"></a></td>
 			</tr>
 		</table>
 	<%} %>	
